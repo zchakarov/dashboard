@@ -2,10 +2,16 @@
   &--container {
     background-color: var(--primary-color);
     color: var(--secondary-color);
+    h1, h2, h3, h4, h5 {
+      font-weight: 100 !important;
+      &.bolder {
+        font-weight: 300 !important;
+      }
+    }
   }
   &--temperature {
     color: var(--primary-color);
     background-color: var(--secondary-color);
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
   }
 }

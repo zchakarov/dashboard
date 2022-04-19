@@ -72,15 +72,16 @@ export default function Weather() {
     }, [fetching])
     return (
         <div>
-            { city.length > 0 && <div className="d-flex flex-column align-items-center justify-content-center weather--container">
-                <h1 className="m-0 p-0">{city[0].local_names.de}</h1>
-                <div className="d-flex flex-row align-items-center justify-content-center weather--temperature px-4">
-                    <h2 className="m-0 p-0">{Math.round(temperature.main.temp)} °C</h2>
+            { city.length > 0 && <div className="p-2 d-flex flex-column flex-sm-row align-items-center justify-content-center weather--container">
+                <h5 className="m-0 mb-1 mx-3 p-0">{city[0].local_names.de}</h5>
+                <div className="d-flex mx-3 flex-row align-items-center justify-content-center weather--temperature px-4">
+                    <h5 className="m-0 p-0 bolder">{Math.round(temperature.main.temp)} °C</h5>
                     <img alt={temperature.weather[0].description} src={`http://openweathermap.org/img/wn/${temperature.weather[0].icon}.png`}  />
 
                 </div>
-                <div className="d-flex flex-row align-items-center justify-content-center weather--misc">
-                    <h3>Wind: {temperature.wind.speed} km/h</h3>
+                <div className="d-flex mx-3 flex-column align-items-start justify-content-center weather--misc">
+                    <p className="m-0 p-0">Wind: {temperature.wind.speed} km/h</p>
+                    <p className="m-0 p-0">Feuchtigkeit: {temperature.main.humidity}%</p>
                 </div>
             </div>
                 }

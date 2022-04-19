@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
+import './App.css';
+import News from "./components/news";
+import Article from "./components/Article";
+import Weather from "./components/weather";
+import Error from "./components/error";
 function App() {
+    const location = useLocation();
+    document.title= "Startseite";
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Weather/>
+        <TransitionGroup className="transition-group">
+            <CSSTransition
+                key={location.key}
+                classNames="transition-element fade"
+                transitionAppear={false}
+                transitionEnter={true}
+                transitionLeave={true}
+                timeout={{
+                    appear: 750,
+                    enter: 750,
+                    exit: 750,
+                }}
+                unmountOnExit={false}
+            >
+                <Routes location={location} className='container'>
+                    <Route path="/" element={<News/>}/>
+                    <Route path="/:id" element={<Article/>}/>
+                    <Route path="/404" element={<Error/>}/>
+
+                </Routes>
+            </CSSTransition>
+        </TransitionGroup>
     </div>
   );
 }

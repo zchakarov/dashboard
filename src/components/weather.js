@@ -73,8 +73,8 @@ export default function Weather() {
     return (
         <div>
             { city.length > 0 && <div className="p-2 d-flex flex-column flex-sm-row align-items-center justify-content-center weather--container">
-                <h5 className="m-0 mb-1 mx-3 p-0">{city[0].local_names.de}</h5>
-                <div className="d-flex mx-3 flex-row align-items-center justify-content-center weather--temperature px-4">
+                <h5 className="m-0 mx-3 p-0">{city[0].local_names.de}</h5>
+                <div className="d-flex mx-3 flex-row align-items-center justify-content-center weather--temperature pr-2 pl-4">
                     <h5 className="m-0 p-0 bolder">{Math.round(temperature.main.temp)} °C</h5>
                     <img alt={temperature.weather[0].description} src={`http://openweathermap.org/img/wn/${temperature.weather[0].icon}.png`}  />
 

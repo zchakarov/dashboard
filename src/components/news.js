@@ -11,7 +11,6 @@ export default function News() {
     const newsPerPage = 16;
     const pagesVisited = pageNumber * newsPerPage;
     const getNews = async () => {
-        document.title= "Startseite";
 
         const newsFeed = await axios.get('https://www.heise.de/extras/frontend/news', {    method: 'GET',
             headers: {
@@ -20,8 +19,10 @@ export default function News() {
         setNews(newsFeed.data);
     }
     useEffect(()=> {
+        document.title= "Startseite";
+
         getNews();
-    }, [])
+    }, [news])
     const pageCount = Math.ceil(news.length / newsPerPage);
 
     const changePage = ({ selected }) => {

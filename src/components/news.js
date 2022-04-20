@@ -45,7 +45,7 @@ export default function News() {
                                             <div className="single--article--header">
                                                 <img loading="lazy" src={bildUrl} width="750" height="420" className="img-fluid" alt={article.image.alt}/>
                                                 <div className="single--article--header--meta">
-                                                    <p className="m-3 mt-4">{tag.toLocaleDateString()}</p>
+                                                    <p className="m-3 mt-4 text-center">{tag.toLocaleDateString()}</p>
                                                     <h5><b>{article.title}</b></h5>
 
                                                 </div>

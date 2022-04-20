@@ -55,7 +55,7 @@ export default function Article() {
                          <Col xs={12} md={8} lg={6}>
                              <p onClick={() => navigate(`/`)} className="link m-0 align-self-center">zurück</p>
                              <h2>{article.title}</h2>
-                             <p>veröffentlicht von {article.meta && article.meta.author} am {datum}</p>
+                             <p className="text-center">veröffentlicht von {article.meta && article.meta.author} am {datum}</p>
                          </Col>
                          <Col xs={12} md={8} lg={8}>
                              <img src={image} className="img-fluid" alt={article.image.alt}/>

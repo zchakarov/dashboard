@@ -8,8 +8,8 @@ export default function News() {
     const [news, setNews] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
 
-    const usersPerPage = 8;
-    const pagesVisited = pageNumber * usersPerPage;
+    const newsPerPage = 16;
+    const pagesVisited = pageNumber * newsPerPage;
     const getNews = async () => {
         const newsFeed = await axios.get('https://www.heise.de/extras/frontend/news', {    method: 'GET',
             headers: {
@@ -20,7 +20,7 @@ export default function News() {
     useEffect(()=> {
         getNews();
     }, [])
-    const pageCount = Math.ceil(news.length / usersPerPage);
+    const pageCount = Math.ceil(news.length / newsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected);
@@ -33,7 +33,7 @@ export default function News() {
                         <Col className="py-3" xs={12}>
                             <h2 className="m-0 news--headline">Aktuelle Nachrichten</h2>
                         </Col>
-                        {news.slice(pagesVisited, pagesVisited + usersPerPage).map((article, index) => {
+                        {news.slice(pagesVisited, pagesVisited + newsPerPage).map((article, index) => {
                             let tag = new Date(article.meta.pubDate)
                             let bildUrl = new URL(article.image.src);
                             bildUrl.searchParams.set('q', 10);
@@ -43,7 +43,7 @@ export default function News() {
                                     <Link className="single--article--link" to={`/${article.id}`}>
                                         <div className="single--article--container">
                                             <div className="single--article--header">
-                                                <img src={bildUrl} className="img-fluid" alt={article.image.alt}/>
+                                                <img loading="lazy" src={bildUrl} width="750" height="420" className="img-fluid" alt={article.image.alt}/>
                                                 <div className="single--article--header--meta">
                                                     <p className="m-3 mt-4">{tag.toLocaleDateString()}</p>
                                                     <h5><b>{article.title}</b></h5>

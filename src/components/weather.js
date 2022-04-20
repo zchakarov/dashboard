@@ -19,26 +19,26 @@ export default function Weather() {
         if(cityLocation.data.length !== 0) {
             setCity(cityLocation.data);
         }
-
     }
     function getLocation() {
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
+            navigator.geolocation.getCurrentPosition(showPosition, showError, options);
         } else {
             setLatitude(52.520008);
             setLongitude(13.404954);
             setFetching(false);
-
         }
-        console.log(latitude)
-        console.log(longitude)
     }
 
     function showPosition(position) {
         setLatitude(position.coords.latitude);
         setLongitude(position.coords.longitude);
         setFetching(false);
-
     }
 
     function showError(error) {
@@ -73,11 +73,10 @@ export default function Weather() {
     return (
         <div>
             { city.length > 0 && <div className="p-2 d-flex flex-column flex-sm-row align-items-center justify-content-center weather--container">
-                <h5 className="m-0 mx-3 p-0">{city[0].local_names.de}</h5>
+                <h5 className="m-0 mx-3 p-0">{city[0].name}</h5>
                 <div className="d-flex mx-3 flex-row align-items-center justify-content-center weather--temperature pr-2 pl-4">
                     <h5 className="m-0 p-0 bolder">{Math.round(temperature.main.temp)} °C</h5>
                     <img alt={temperature.weather[0].description} src={`http://openweathermap.org/img/wn/${temperature.weather[0].icon}.png`}  />
-
                 </div>
                 <div className="d-flex mx-3 flex-column align-items-start justify-content-center weather--misc">
                     <p className="m-0 p-0">Wind: {temperature.wind.speed} km/h</p>
@@ -86,7 +85,6 @@ export default function Weather() {
             </div>
                 }
         </div>
-
     )
 }
 

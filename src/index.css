@@ -37,6 +37,12 @@
   transition: all var(--transition-speed) ease-in-out;
 }
 
+p {
+  line-height: 1.75;
+  letter-spacing: 0.75px;
+  text-align: justify;
+}
+
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 1.5rem;

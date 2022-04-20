@@ -64,7 +64,7 @@ export default function Article() {
                      <div className="article--container--body">
                          <Row className="justify-content-center">
                              <Col xs={10} md={8}>
-                                 <p className="text-left">{article && article.content}</p>
+                                 <p>{article && article.content}</p>
                              </Col>
                          </Row>
                      </div>

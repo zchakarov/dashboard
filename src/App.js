@@ -8,7 +8,6 @@ import Weather from "./components/weather";
 import Error from "./components/error";
 function App() {
     const location = useLocation();
-    document.title= "Startseite";
 
   return (
     <div className="App">

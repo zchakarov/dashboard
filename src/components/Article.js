@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Article() {
     const { id } = useParams();
     const [article, setArticle] = useState([]);
+    const [title, setTitle] = useState("Laden");
     const [fetching, setFetching] = useState(true)
     const [error, setError] = useState(true)
     const [datum, setDatum] = useState();
@@ -31,6 +32,7 @@ export default function Article() {
         setImage(bildUrl);
         setDatum(tag.toLocaleDateString());
     }
+    document.title= title;
     useEffect(()=> {
         getArticle();
     }, [setArticle])
@@ -40,7 +42,10 @@ export default function Article() {
             navigate("/404");
         }
         else {
-            document.title= article.title;
+            if(article.title) {
+                setTitle(article.title);
+
+            }
         }
     }, [fetching, error])
     return (

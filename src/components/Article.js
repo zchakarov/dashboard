@@ -18,12 +18,10 @@ export default function Article() {
             headers: {
                 "X-Heise-Token": 'zcJulkgE'
             },})
-
             .catch(function () {
                 setError(true)
         });
         setFetching(false);
-
         setArticle(newsFeed.data);
         let bildUrl = new URL(newsFeed.data.image.src);
         let tag = new Date(newsFeed.data.meta.pubDate)
@@ -32,56 +30,45 @@ export default function Article() {
         bildUrl.searchParams.set('width', 800);
         setImage(bildUrl);
         setDatum(tag.toLocaleDateString());
-
     }
     useEffect(()=> {
         getArticle();
     }, [setArticle])
     useEffect(()=> {
         scrolltop();
-        console.log(article);
-        console.log(fetching)
         if(article.length === 0 && fetching === false) {
             navigate("/404");
         }
         else {
             document.title= article.title;
-
         }
     }, [fetching, error])
-    useEffect(()=> {
-
-
-    }, [fetching])
-
     return (
 
          <div className="article m-0">
              {
                  article.id > 0 &&
+                 <div className="m-0">
                  <div className="article--container container my-5">
-
                      <div
                          className="article--container--header row flex-column justify-content-center align-items-center">
                          <Col xs={12} md={8} lg={6}>
-                             <h4 onClick={() => navigate(`/`)} className="link m-0 align-self-center">zurück</h4>
-
+                             <p onClick={() => navigate(`/`)} className="link m-0 align-self-center">zurück</p>
                              <h2>{article.title}</h2>
-                             <h5>veröffentlicht von {article.meta && article.meta.author} am {datum}</h5>
+                             <p>veröffentlicht von {article.meta && article.meta.author} am {datum}</p>
                          </Col>
                          <Col xs={12} md={8} lg={8}>
                              <img src={image} className="img-fluid" alt={article.image.alt}/>
                          </Col>
-
                      </div>
                      <div className="article--container--body">
                          <Row className="justify-content-center">
                              <Col xs={10} md={8}>
                                  <p className="text-left">{article && article.content}</p>
-
                              </Col>
                          </Row>
                      </div>
+                 </div>
                  </div>
              }
         </div>

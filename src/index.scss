@@ -1,6 +1,7 @@
 @import "scss/variables";
 @import "scss/transition";
 @import "scss/fonts";
+@import "scss/error";
 @import "scss/news";
 @import "scss/weather";
 
@@ -23,3 +24,23 @@ body {
 
 }
 
+a {
+  color: var(--primary-color);
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
+
+.paginationBttns {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  li {
+    margin: .25rem;
+    color: var(--secondary-color);
+    &.paginationActive {
+      color: var(--primary-color);
+    }
+  }
+}

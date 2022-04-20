@@ -17,7 +17,7 @@ function App() {
             <CSSTransition
                 key={location.key}
                 classNames="transition-element fade"
-                transitionAppear={false}
+                transitionAppear={true}
                 transitionEnter={true}
                 transitionLeave={true}
                 timeout={{
@@ -25,7 +25,7 @@ function App() {
                     enter: 750,
                     exit: 750,
                 }}
-                unmountOnExit={false}
+                unmountOnExit={true}
             >
                 <Routes location={location} className='container'>
                     <Route path="/" element={<News/>}/>

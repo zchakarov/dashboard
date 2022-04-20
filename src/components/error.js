@@ -15,18 +15,15 @@ export default function Error() {
 
         return (
 
-            <div>
-                <div className='content-container error'>
-                    <Container fluid="xl" className="error--container">
-                        <Row>
-                            <Col lg={12}>
-                                <h1>404 Error</h1>
-                                <h3 onClick={()=> navigate("/")} className="link m-0 align-self-center">Geh zurück zur Startseite</h3>
-                            </Col>
-                        </Row>
-                    </Container>
-
-                </div>
+            <div className="error">
+                <Container fluid className="error--container">
+                    <Row className="h-100 justify-content-center align-items-center">
+                        <Col lg={12}>
+                            <h1>404 Error</h1>
+                            <h3 onClick={()=> navigate("/")} className="link m-0 align-self-center">Geh zurück zur Startseite</h3>
+                        </Col>
+                    </Row>
+                </Container>
 
 
             </div>

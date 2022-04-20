@@ -1,13 +1,175 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400&display=swap");
+:root {
+  --primary-color: #49C3DA;
+  --secondary-color: #333333;
+  --transition-speed: .3s;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.transition-element > * {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  min-height: 1px;
+  width: 100%;
 }
+
+.fade-enter, .fade-appear {
+  transition: all var(--transition-speed) ease-in-out var(--transition-speed);
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 0;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.fade-enter-done,
+.fade-appear-done {
+  opacity: 1;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.fade-exit-active,
+.fade-leave-active {
+  opacity: 0;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3, h4, h5 {
+    font-size: 1rem;
+  }
+}
+.error--container .row {
+  min-height: calc((100vh - 66px));
+  width: 100vw;
+}
+
+.news--container {
+  min-height: calc((100vh - 66px));
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.news--container .single--article {
+  min-height: calc((100vh - 132px)/2);
+}
+.news--container .single--article--link {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  color: var(--secondary-color);
+}
+.news--container .single--article--link img {
+  transition: var(--transition-speed) ease-in-out;
+}
+.news--container .single--article--link:hover {
+  text-decoration: none;
+}
+.news--container .single--article--link:hover img {
+  filter: grayscale(100%);
+  transition: var(--transition-speed) ease-in-out;
+}
+
+.news--headline {
+  display: inline-block;
+  position: relative;
+}
+.news--headline:after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+
+.link {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .news--container .single--article {
+    min-height: 0;
+  }
+  .news--container .single--article--link {
+    min-height: 0;
+  }
+}
+.weather--container {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.weather--container h1, .weather--container h2, .weather--container h3, .weather--container h4, .weather--container h5, .weather--container p {
+  font-weight: 400 !important;
+}
+.weather--temperature {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border-radius: 1.5rem;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 100 !important;
+}
+
+.link {
+  display: inline-block;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.article--container--header {
+  min-height: calc(100vh - 118px);
+}
+
+a {
+  color: var(--primary-color);
+}
+a:hover {
+  color: var(--secondary-color);
+}
+
+.paginationBttns {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.paginationBttns li {
+  margin: 0.25rem;
+  color: var(--secondary-color);
+}
+.paginationBttns li.paginationActive {
+  color: var(--primary-color);
+}
+
+/*# sourceMappingURL=index.css.map */

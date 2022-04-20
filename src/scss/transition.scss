@@ -8,8 +8,6 @@
 }
 
 .fade-enter {
-  transform: translateX(0);
-  transform-origin: center;
   transition: all var(--transition-speed) ease-in-out var(--transition-speed);
   opacity: 0;
 
@@ -21,26 +19,19 @@
 
 .fade-enter-active {
   opacity: 0;
-  transform: scale(1) translateX(0);
-  transform-origin: center;
   transition: all var(--transition-speed) ease-in-out ;
-
 }
 
 .fade-enter-done,
 .fade-appear-done {
-  @extend .fade-enter-active;
   opacity: 1;
-
   transition: all var(--transition-speed) ease-in-out;
 
 }
 
-.fade-exit.fade-exit-active,
-.fade-exit.fade-leave-active {
+.fade-exit-active,
+.fade-leave-active {
   opacity: 0;
-  transform: translateX(0);
-  transform-origin: center;
   transition: all var(--transition-speed) ease-in-out;
 
 }
